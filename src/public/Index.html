@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <title>Logs Ingestor</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="container card-body col-12">
+                    <div class="container card-body col-5">
+                        <div class="form-control m-3" style="background-color: aliceblue;">
+                            <form onsubmit="filterLog(event)" method="get">
+                                <h3 style="color:gray;">Filter</h3>
+                                <select class="form-select" name="filter" id="filter">
+                                    <option value="level">level</option>
+                                    <option value="message">message</option>
+                                    <option value="resourceId">resourceId</option>
+                                    <option value="timestamp">timestamp</option>
+                                    <option value="traceId">traceId</option>
+                                    <option value="spanId">spanId</option>
+                                    <option value="commit">commit</option>
+                                    <option value="parentResourceId">parentResourceId</option>
+                                </select>
+                                <input class="form-control" type="text" name="filterData" id="filterData"
+                                    placeholder="Enter data">
+                                <button type="submit" class="btn btn-sm btn-primary">Find</button>
+                            </form>
+                        </div>
+                        <div class="form-control m-3" style="background-color: aliceblue;">
+                            <form onsubmit="range(event)" method="get">
+                                <h3 style="color:gray;">Range</h3>
+                                <input class="form-control" type="text" name="start" id="start" placeholder="From">
+                                <input class="form-control" type="text" name="end" id="end" placeholder="Till">
+                                <button type="submit" class="btn btn-sm btn-primary">Find</button>
+                            </form>
+                        </div>
+                        <div class="form-control m-3" style="background-color: aliceblue;">
+                            <form onsubmit="fullTextSearch(event)">
+                                <h3 style="color:gray;">Full Text Search</h3>
+                                <input class="form-control" type="text" name="fullText" id="fullText"
+                                    placeholder="Enter data">
+                                <button type="submit" class="btn btn-sm btn-primary">Find</button>
+                            </form>
+                        </div>
+                        <div class="form-control m-3" style="background-color: aliceblue;">
+                            <form onsubmit="ingest(event)" method="post">
+                                <h3 style="color:gray;">Ingestor</h3>
+                                <input class="form-control" type="text" name="ingestor" id="ingestor"
+                                    placeholder="Enter log data" required>
+                                <button type="submit" class="btn btn-sm btn-primary">Ingest</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="container card-body col-12">
+                    <div class="container card-body">
+                        <div class="m-4" id="queried-logs">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "dyte-task",
+  "version": "1.0.0",
+  "description": "Log Ingestor",
+  "main": "src/App.js",
+  "scripts": {
+    "start": "nodemon src/App.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Soumyadeb Sutradhar",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^8.0.1"
+  }
+}
